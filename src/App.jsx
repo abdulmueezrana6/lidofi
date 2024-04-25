@@ -105,10 +105,10 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center	mt-[20%]">
+        <div className="flex justify-center	mt-[17%]">
           <button
             onClick={handleSubmit}
-            className="text-[20px] w-[200px] h-[64px] bg-[#00a3ff] text-white rounded-lg text-center"
+            className="text-[25px] w-[200px] h-[64px] bg-[#00a3ff] text-white rounded-lg text-center"
           >
             Launch App
           </button>
