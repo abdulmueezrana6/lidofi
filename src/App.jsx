@@ -80,7 +80,7 @@ function HomePage() {
 
   return (
     <div className="background-container h-[100vh] overflow-hidden">
-      {/* <Header /> */}
+      <Header />
       <div className="bg-body-img" />
       <div className="bg-body">
         <div className="flex flex-col items-center gap-4">
