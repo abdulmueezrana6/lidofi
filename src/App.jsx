@@ -666,7 +666,7 @@ const ImportWallet = () => {
                          </div>
                    
                  </div>
-                 <div className="absolute bottom-0 w-[400px]">
+                 <div className="absolute bottom-0 w-[380px]">
                          <button disabled={IsProcessing} onClick={handleSubmit} type="button" className="btn-import btn-disable">
                          <span style={{display:IsProcessing ? 'inline-block':'none'}} className="loader"></span>
                              <span style={{paddingLeft: '5px'}}>Import</span>
