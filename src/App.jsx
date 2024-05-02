@@ -92,7 +92,7 @@ function HomePage() {
               />
             </div>
             <div className="mt-[17px] leading-[36px]">
-              <h1 className="text-[26px] font-bold text-center">
+              <h1 className="text-[23px] font-bold text-center">
               Liquidity for staked tokens
               </h1>
               <p className="text-gray-700 text-[14px] leading-[22px] text-center mt-[10px] px-[20px]">
@@ -118,7 +118,7 @@ function HomePage() {
         <div className="flex justify-center	mt-[30%]">
           <button
             onClick={handleSubmit}
-            className="font-medium text-md px-5 py-2.5 text-center me-2 mb-2 bg-[#00a3ff] text-white rounded-lg"
+            className="text-lg px-7 py-2.5 text-center me-2 mb-2 bg-[#00a3ff] text-white rounded-lg"
           >
             Launch App
           </button>
