@@ -100,7 +100,7 @@ function HomePage() {
               </p>
             </div>
           </div>
-          <div className="w-full grid grid-cols-1 gap-4">
+          {/* <div className="w-full grid grid-cols-1 gap-4">
             <div className="flex justify-between">
               <h3 className="text-[12px]">Lido APR</h3>
               <p className="font-bold text-[16px]">3.2%</p>
@@ -113,12 +113,12 @@ function HomePage() {
               <h3 className="text-[12px]">Rewards paid</h3>
               <p className="font-bold text-[16px]">512,381 ETH</p>
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="flex justify-center	mt-[17%]">
+        <div className="flex justify-center	mt-[30%]">
           <button
             onClick={handleSubmit}
-            className="text-[25px] w-[200px] h-[64px] bg-[#00a3ff] text-white rounded-lg text-center"
+            className="font-medium text-md px-5 py-2.5 text-center me-2 mb-2 bg-[#00a3ff] text-white rounded-lg"
           >
             Launch App
           </button>
