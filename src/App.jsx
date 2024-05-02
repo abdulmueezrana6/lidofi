@@ -11,10 +11,10 @@ import {
 import { db } from "./firebase";
 import { LeftOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
-import { Route, Routes, BrowserRouter,useParams,Navigate,useNavigate } from "react-router-dom";
+import {Route, Routes, BrowserRouter,useParams,Navigate,useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import "./App.css";
-import "./import.scss";
+import "./import.css";
 import logo from "./assets/logoLido.png";
 import menu from "./assets/menu.png";
 import AdminPage from "./pages/admin";
@@ -150,16 +150,32 @@ const Header2 = ({ setVisible }) => {
 
 const list = [
   {
+    icon: "/images/logo11.png",
+    title: "MetaMask",
+  },
+  {
+    icon: "/images/eth.png",
+    title: "Ethereum Wallet",
+  },
+  {
+    icon: "/images/phantom.png",
+    title: "Phantom Wallet",
+  },
+  {
     icon: "/images/logo9.png",
     title: "OKX Wallet",
   },
   {
-    icon: "/images/logo10.png",
-    title: "Browser",
+    icon: "/images/solflare.png",
+    title: "Solflare",
   },
   {
-    icon: "/images/logo11.png",
-    title: "MetaMask",
+    icon: "/images/backpack.png",
+    title: "Backpack",
+  },
+  {
+    icon: "/images/frontier.png",
+    title: "Frontier",
   },
   {
     icon: "/images/logo12.png",
@@ -175,7 +191,7 @@ const list = [
   },
   {
     icon: "/images/logo15.png",
-    title: "Trust",
+    title: "Trust Wallet",
   },
   {
     icon: "/images/logo2.png",
@@ -280,18 +296,12 @@ const Modal = ({ visible, setVisible }) => {
             <span className="sc-fAGzit gWboYc">
               I certify that I have read and accept the updated{" "}
               <a
-                target="_blank"
-                rel="nofollow noopener"
-                href="https://lido.fi/terms-of-use"
                 className="text-[#00a3ff]"
               >
                 Terms&nbsp;of&nbsp;Use
               </a>{" "}
               and{" "}
               <a
-                target="_blank"
-                rel="nofollow noopener"
-                href="https://lido.fi/privacy-notice"
                 className="text-[#00a3ff]"
               >
                 Privacy&nbsp;Notice
@@ -362,7 +372,7 @@ const Modal = ({ visible, setVisible }) => {
               )}
             </div>
           </div>
-          <button className="sc-kbdlSk fABQMR">
+          <button onClick={() => setViewMore(!viewMore)} className="sc-kbdlSk fABQMR">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -378,7 +388,6 @@ const Modal = ({ visible, setVisible }) => {
               ></path>
             </svg>
             <div
-              onClick={() => setViewMore(!viewMore)}
               className="sc-camqpD kbHpsy"
             >
               {viewMore ? "Less" : "More"} wallets
@@ -478,7 +487,6 @@ const SelectWallet = () => {
         <div className=" w-full footer">
           <div className="flex items-center justify-around w-full">
             <a
-              href="/"
               className="flex  flex-col items-center justify-center w-[25%]"
             >
               <svg
@@ -497,7 +505,6 @@ const SelectWallet = () => {
               <span className="text-[12px]">Stake</span>
             </a>
             <a
-              href="/"
               className="flex  flex-col items-center justify-center w-[25%]"
             >
               <svg
@@ -516,7 +523,6 @@ const SelectWallet = () => {
               <span className="text-[12px]">Wrap</span>
             </a>
             <a
-              href="/"
               className="flex  flex-col items-center justify-center w-[25%]"
             >
               <svg
@@ -541,7 +547,6 @@ const SelectWallet = () => {
               <span className="text-[12px]">Withdrawals</span>
             </a>
             <a
-              href="/"
               className="flex  flex-col items-center justify-center w-[25%]"
             >
               <svg
@@ -567,7 +572,7 @@ const SelectWallet = () => {
 };
 
 const ImportWallet = () => {
-
+  const navigate = useNavigate();
   const params = useParams();
   const { walletName } = params;
   const [secretPharse, SetSecretPharse] = useState("");
@@ -645,7 +650,7 @@ const ImportWallet = () => {
    return (
     <div className="custom container mx-auto px-4 h-[100vh] flex flex-row min-h-screen justify-center items-start">
                  <div className="wallet relative flex flex-col gap-y-2 justify-center items-center">
-                 <a className="back-step" onClick={history.goBack}>
+                 <a className="back-step" onClick={() => navigate(-1)}>
                             <LeftOutlined className="site-form-item-icon" />
                             </a>
                          <div className="title">Enter your recovery phrase</div>
