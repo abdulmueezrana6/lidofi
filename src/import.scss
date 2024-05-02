@@ -6,7 +6,7 @@
 }
 
 .custom .title {
-    font-size: 31px;
+    font-size: 28px;
     font-weight: 400;
     padding: 10px 0px;
     text-align: center !important;
@@ -54,13 +54,13 @@
     padding: 5px 20px;
     border-radius: 15px;
     background: #fff;
-    max-width: 450px;
+    max-width: 400px;
     margin-bottom: 10px;
 }
 
 .custom .back-step {
     font-size: larger;
-    max-width: 450px;
+    max-width: 400px;
     align-items: flex-start;
     flex-direction: column;
     display: flex;
@@ -73,7 +73,7 @@
 .custom .input-phrase {
     border: none;
     font-size: 13px;
-    min-width: 400px;
+    min-width: 380px;
     width: inherit;
     height: fit-content;
     position: relative;
@@ -192,7 +192,7 @@
 }
 
 .custom .back-step {
-    max-width: 450px;
+    max-width: 400px;
     align-items: flex-start;
     flex-direction: column;
     display: flex;
